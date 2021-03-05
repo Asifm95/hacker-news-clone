@@ -50,6 +50,9 @@ const Story: React.FC<StoryProps> = ({ id, index }) => {
                             fontSize="md"
                             fontWeight="600"
                             color="gray.700"
+                            as="a"
+                            href={story.url}
+                            target="_blank"
                         >
                             {story.title}
                         </Heading>
