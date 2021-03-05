@@ -19,16 +19,21 @@ const Story: React.FC<StoryProps> = ({ id, index }) => {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
+        let cancelRequest = false;
         getStory(id)
             .then((data) => {
-                if (data) {
-                    setStory(data);
-                    setLoading(false);
-                }
+                if (cancelRequest) return;
+                setStory(data);
+                setLoading(false);
             })
-            .catch((err) => {
-                throw new Error(err);
+            .catch((error) => {
+                cancelRequest = true;
+                setLoading(false);
+                console.error(error);
             });
+        return function cleanup() {
+            cancelRequest = true;
+        };
     }, [id, index]);
 
     useEffect(() => {
