@@ -12,7 +12,7 @@ const StoryIndex: React.FC<StoryIndexProps> = ({ index, ...rest }) => {
     return (
         <HStack h="100%" justify="space-between" {...rest}>
             <Heading fontSize="lg">{zeroPad(index, 2)}</Heading>
-            <Icon as={FiTriangle} fill="#f56565" color="#f56565" />
+            <Icon as={FiTriangle} fill="primary" color="primary" />
         </HStack>
     );
 };

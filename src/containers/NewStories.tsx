@@ -43,7 +43,7 @@ const NewStories: React.FC<NewStoriesProps> = () => {
                 pb={20}
                 fontSize="sm"
                 fontWeight="bold"
-                color="#f56565"
+                color="primary"
                 cursor="pointer"
             >
                 LOAD MORE
