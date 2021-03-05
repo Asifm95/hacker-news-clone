@@ -5,7 +5,7 @@ export default function Logo(props: any) {
     return (
         <Box {...props}>
             <Text fontSize="lg" fontWeight="bold">
-                Facker News
+                Hacker News
             </Text>
         </Box>
     );
