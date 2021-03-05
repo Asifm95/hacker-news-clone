@@ -3,10 +3,7 @@ import React from 'react';
 
 interface NavbarContainerProps {}
 
-const NavbarContainer: React.FC<NavbarContainerProps> = ({
-    children,
-    ...props
-}) => {
+const NavbarContainer: React.FC<NavbarContainerProps> = ({ children }) => {
     return (
         <Flex
             as="nav"
@@ -19,7 +16,6 @@ const NavbarContainer: React.FC<NavbarContainerProps> = ({
             p={5}
             bg={['transparent']}
             color={['white']}
-            {...props}
         >
             {children}
         </Flex>

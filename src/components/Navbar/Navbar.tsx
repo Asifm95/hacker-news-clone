@@ -6,13 +6,13 @@ import NavBarContainer from './NavbarContainer';
 
 interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = (props) => {
+const Navbar: React.FC<NavbarProps> = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <NavBarContainer {...props}>
+        <NavBarContainer>
             <Logo w="150px" color={'black'} />
             <MenuToggle toggle={toggle} isOpen={isOpen} />
             <MenuLinks isOpen={isOpen} />
