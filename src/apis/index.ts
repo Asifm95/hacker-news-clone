@@ -24,3 +24,7 @@ export const getTopStoryIds = async (): Promise<IStoryIds> => {
     const result = await api.get<IStoryIds>(topStoriesUrl);
     return result.data;
 };
+export const getJobStoryIds = async (): Promise<IStoryIds> => {
+    const result = await api.get<IStoryIds>(jobStoriesUrl);
+    return result.data;
+};
