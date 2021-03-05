@@ -5,6 +5,7 @@ import TopStories from './containers/TopStories';
 import Navbar from './components/Navbar/Navbar';
 import NewStories from './containers/NewStories';
 import { theme } from './theme';
+import JobStories from './containers/JobStories';
 export const App = () => (
     <ChakraProvider theme={theme}>
         <Box minH="100vh">
@@ -13,6 +14,7 @@ export const App = () => (
                 <Switch>
                     <Route exact path="/" component={TopStories} />
                     <Route exact path="/new" component={NewStories} />
+                    <Route exact path="/jobs" component={JobStories} />
                 </Switch>
             </BrowserRouter>
         </Box>
