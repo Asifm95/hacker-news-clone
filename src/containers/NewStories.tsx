@@ -1,18 +1,25 @@
 import { Box } from '@chakra-ui/layout';
 import { Center, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { getTopStoryIds } from '../apis';
+import { getNewStoryIds } from '../apis';
 import Story from '../components/Story/Story';
 import { IStoryIds } from '../types/StoryInterface';
 
-interface TopStoriesProps {}
+interface NewStoriesProps {}
 
-const TopStories: React.FC<TopStoriesProps> = () => {
+const NewStories: React.FC<NewStoriesProps> = () => {
     const [storyIds, setStoryIds] = useState<IStoryIds>([]);
     const [count, setCount] = useState<number>(20);
 
     useEffect(() => {
-        getTopStoryIds().then((data) => setStoryIds(data));
+        let cancelRequest = false;
+        getNewStoryIds().then((data) => {
+            if (cancelRequest) return;
+            setStoryIds(data);
+        });
+        return function cleanup() {
+            cancelRequest = true;
+        };
     }, []);
 
     return (
@@ -44,4 +51,4 @@ const TopStories: React.FC<TopStoriesProps> = () => {
         </Box>
     );
 };
-export default TopStories;
+export default NewStories;
