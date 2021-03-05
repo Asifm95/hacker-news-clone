@@ -1,6 +1,6 @@
 import { Stack, Text, Box } from '@chakra-ui/react';
 import React from 'react';
-import { BrowserRouter, Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 interface MenuLinksProps {
     isOpen: boolean;
@@ -32,13 +32,11 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ isOpen }) => {
 
 const MenuItem: React.FC<MenuItemProps> = ({ children, to, ...rest }) => {
     return (
-        <BrowserRouter>
-            <RouterLink to={to}>
-                <Text display="block" color="gray.600" {...rest}>
-                    {children}
-                </Text>
-            </RouterLink>
-        </BrowserRouter>
+        <RouterLink to={to}>
+            <Text display="block" color="gray.600" {...rest}>
+                {children}
+            </Text>
+        </RouterLink>
     );
 };
 export default MenuLinks;
