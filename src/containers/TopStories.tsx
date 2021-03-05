@@ -1,19 +1,23 @@
 import { Box } from '@chakra-ui/layout';
-import { Center, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { getTopStoryIds } from '../apis';
+import AddMore from '../components/Story/AddMore';
 import Story from '../components/Story/Story';
 import { IStoryIds } from '../types/StoryInterface';
+import { INCREMENT } from '../utils/constants';
 
 interface TopStoriesProps {}
 
 const TopStories: React.FC<TopStoriesProps> = () => {
     const [storyIds, setStoryIds] = useState<IStoryIds>([]);
-    const [count, setCount] = useState<number>(20);
+    const [count, setCount] = useState<number>(INCREMENT);
 
     useEffect(() => {
         getTopStoryIds().then((data) => setStoryIds(data));
     }, []);
+
+    const handleSetCount = () => setCount((count) => count + INCREMENT);
 
     return (
         <Box bg="#f7fafc" minH="100vh">
@@ -30,17 +34,7 @@ const TopStories: React.FC<TopStoriesProps> = () => {
                     <Story key={storyId} id={storyId} index={index + 1} />
                 ))}
             </VStack>
-            <Center
-                onClick={() => setCount((count) => count + 20)}
-                pt={10}
-                pb={20}
-                fontSize="sm"
-                fontWeight="bold"
-                color="#f56565"
-                cursor="pointer"
-            >
-                LOAD MORE
-            </Center>
+            <AddMore setCount={handleSetCount} />
         </Box>
     );
 };
