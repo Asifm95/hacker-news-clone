@@ -14,14 +14,11 @@ const NewStories: React.FC<NewStoriesProps> = () => {
     const [count, setCount] = useState<number>(INCREMENT);
 
     useEffect(() => {
-        let cancelRequest = false;
-        getNewStoryIds().then((data) => {
-            if (cancelRequest) return;
-            setStoryIds(data);
-        });
-        return function cleanup() {
-            cancelRequest = true;
-        };
+        getNewStoryIds()
+            .then((data) => setStoryIds(data))
+            .catch((error) => {
+                console.error(error);
+            });
     }, []);
 
     const handleSetCount = () => setCount((count) => count + INCREMENT);

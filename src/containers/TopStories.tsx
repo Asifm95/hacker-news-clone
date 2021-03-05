@@ -14,7 +14,11 @@ const TopStories: React.FC<TopStoriesProps> = () => {
     const [count, setCount] = useState<number>(INCREMENT);
 
     useEffect(() => {
-        getTopStoryIds().then((data) => setStoryIds(data));
+        getTopStoryIds()
+            .then((data) => setStoryIds(data))
+            .catch((error) => {
+                console.error(error);
+            });
     }, []);
 
     const handleSetCount = () => setCount((count) => count + INCREMENT);
