@@ -10,8 +10,8 @@ interface StoryMetaDataProps {
 const StoryMetaData: React.FC<StoryMetaDataProps> = ({ story, storyTime }) => {
     return (
         <Text mt={1} fontSize="xs" color="gray.600">
-            {story.kids?.length ?? 0} comments
             {story.score} point by {story.by} | {storyTime} ago |{' '}
+            {story.kids?.length ?? 0} comments
         </Text>
     );
 };
