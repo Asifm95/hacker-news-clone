@@ -47,7 +47,7 @@ const Story: React.FC<StoryProps> = ({ id, index }) => {
                 {loading ? (
                     <SkeletonCircle size="10" isLoaded={!loading} />
                 ) : (
-                    <StoryIndex index={index} width="55px" />
+                    <StoryIndex index={index} width="55px" type={story.type} />
                 )}
                 <Skeleton isLoaded={!loading}>
                     <Box>
