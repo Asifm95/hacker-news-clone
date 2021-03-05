@@ -1,4 +1,4 @@
-import { Box, Heading, Skeleton, SkeletonCircle, Text } from '@chakra-ui/react';
+import { Box, Heading, Skeleton, SkeletonCircle } from '@chakra-ui/react';
 
 import React, { useEffect, useState } from 'react';
 import { getStory } from '../../apis';
@@ -6,6 +6,7 @@ import { IStory } from '../../types/StoryInterface';
 import { convertTime } from '../../utils/timeConverter';
 import StoryContainer from './StoryContainer';
 import StoryIndex from './StoryIndex';
+import StoryMetaData from './StoryMetaData';
 
 interface StoryProps {
     id: number;
@@ -52,10 +53,7 @@ const Story: React.FC<StoryProps> = ({ id, index }) => {
                         >
                             {story.title}
                         </Heading>
-                        <Text mt={1} fontSize="xs" color="gray.600">
-                            {story.score} point by {story.by} | {storyTime} ago
-                            | {story.kids?.length ?? 0} comments
-                        </Text>
+                        <StoryMetaData storyTime={storyTime} story={story} />
                     </Box>
                 </Skeleton>
             </StoryContainer>
