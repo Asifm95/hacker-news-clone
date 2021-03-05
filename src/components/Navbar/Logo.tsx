@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
 interface LogoProps {
     w: string;
@@ -9,9 +10,11 @@ interface LogoProps {
 const Logo = (props: LogoProps) => {
     return (
         <Box {...props}>
-            <Text fontSize="lg" fontWeight="bold">
-                Hacker News
-            </Text>
+            <RouterLink to={'/'}>
+                <Text fontSize="lg" fontWeight="bold">
+                    Hacker News
+                </Text>
+            </RouterLink>
         </Box>
     );
 };
